@@ -44,6 +44,18 @@ class ProductTest {
     }
 
     @Test
+    public void shouldSaveAgain() {
+
+        repo.save(item1);
+        repo.save(item4);
+
+        // check exception
+        assertThrows(AlreadyExistsException.class, () -> {
+            repo.save(item1);
+        });
+    }
+
+    @Test
     public void shouldRemoveById() {
 
         repo.save(item1);
